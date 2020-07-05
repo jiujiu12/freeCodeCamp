@@ -43,7 +43,7 @@ var SpaceShuttle1 = function(targetPlanet){
   this.targetPlanet = targetPlanet;
   console.log(targetPlanet);
 }
-var zeus = new SpaceShuttle1('Jupiter');
+var zeus1 = new SpaceShuttle1('Jupiter');
 // class的语法只是简单地替换了构造函数的写法：
 
 class SpaceShuttle2 {
@@ -52,11 +52,48 @@ class SpaceShuttle2 {
     console.log(targetPlanet);
   }
 }
-const zeus = new SpaceShuttle2('Jupiter');
+const zeus2 = new SpaceShuttle2('Jupiter');
 // 注意class关键字声明了一个新的函数，并在其中添加了一个会在使用new关键字创建新对象时调用的构造函数
 
 
 // 问题：使用class关键字，并写出正确的构造函数，来创建Vegetable这个类：
 
 // Vegetable这个类可以创建 vegetable 对象，这个对象拥有一个在构造函数中赋值的name属性。
+function makeClass() {
+    "use strict";
+    /* 在这行下面改写代码 */
+    class Vegetable{
+      constructor(name){
+        this.name = name;
+      }
+    }
+    /* 在这行上面改写代码 */
+    return Vegetable;
+  }
+  const Vegetable = makeClass();
+  const carrot = new Vegetable('carrot');
+  console.log(carrot.name); // => 应该显示 'carrot'
 
+//   getter和setter
+function makeClass() {
+    "use strict";
+    /* 请把你的代码写在这条注释以下 */
+    class Thermostat{
+      constructor (f){
+        this.temp = 5/9*(f - 32);
+      }
+      get temperature(){
+        return this.temp;
+      }
+      set temperature(c){
+        this.temp = c*9/5 + 32;
+      }
+    }
+    /* 请把你的代码写在这条注释以上 */
+    return Thermostat;
+  }
+  const Thermostat = makeClass();
+  const thermos = new Thermostat(76); // 使用华氏温度来初始化
+  let temp = thermos.temperature; // 摄氏温度24.44度
+  thermos.temperature = 26;
+  temp = thermos.temperature; // 摄氏温度26度
